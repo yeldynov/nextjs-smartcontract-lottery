@@ -13,7 +13,6 @@ export default function LotteryEntrance() {
     const raffleAddress = chainId in contractAddresses ? contractAddresses[chainId][0] : null
 
     // State hooks
-    // https://stackoverflow.com/questions/58252454/react-hooks-using-usestate-vs-just-variables
     const [entranceFee, setEntranceFee] = useState("0")
     const [numberOfPlayers, setNumberOfPlayers] = useState("0")
     const [recentWinner, setRecentWinner] = useState("0")
@@ -76,26 +75,14 @@ export default function LotteryEntrance() {
             updateUIValues()
         }
     }, [isWeb3Enabled])
-    // no list means it'll update everytime anything changes or happens
-    // empty list means it'll run once after the initial rendering
-    // and dependencies mean it'll run whenever those things in the list change
-
-    // An example filter for listening for events, we will learn more on this next Front end lesson
-    // const filter = {
-    //     address: raffleAddress,
-    //     topics: [
-    //         // the name of the event, parnetheses containing the data type of each event, no spaces
-    //         utils.id("RaffleEnter(address)"),
-    //     ],
-    // }
 
     const handleNewNotification = () => {
         dispatch({
-            type: "info",
+            type: "success",
             message: "Transaction Complete!",
-            title: "Transaction Notification",
+            title: "Success Notification",
             position: "topR",
-            icon: "bell",
+            icon: "check",
         })
     }
 
